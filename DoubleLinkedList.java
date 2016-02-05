@@ -10,19 +10,19 @@ import sda.Node;
        	private Node<T> tail;
        
        	public void setHead(Node<T> head) {
-       		   this.head = head;
+       	       this.head = head;
        	}
        
        	public void setTail(Node<T> tail) {
-       	   	 this.tail = tail;
+       	       this.tail = tail;
        	}
        
        	public Node<T> getHead() {
-       		    return head;
+       	       return head;
        	}
        
        	public Node<T> getTail() {
-       	    	return tail;
+       	       return tail;
        	}
 
  public void add(T data) {
