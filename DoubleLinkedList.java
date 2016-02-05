@@ -25,21 +25,21 @@ import sda.Node;
        	       return tail;
        	}
 
- public void add(T data) {
-		Node<T> newNode = new Node<T>(data);
-		if (head == null) {
-			head = newNode;
-			tail = head;
-			tail.setLeft(head);
-			head.setRight(tail);
-
-		} else {
-			tail.setRight(newNode);
-			newNode.setLeft(tail);
-			tail = newNode;
+	 public void add(T data) {
+			Node<T> newNode = new Node<T>(data);
+			if (head == null) {
+				head = newNode;
+				tail = head;
+				tail.setLeft(head);
+				head.setRight(tail);
+	
+			} else {
+				tail.setRight(newNode);
+				newNode.setLeft(tail);
+				tail = newNode;
+			}
+	
 		}
-
-	}
 	
 		public int size() {
 		int size = 0;
