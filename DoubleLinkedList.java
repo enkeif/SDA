@@ -10,7 +10,7 @@ import sda.Node;
        	private Node<T> tail;
        
        	public void setHead(Node<T> head) {
-       		    this.head = head;
+       		   this.head = head;
        	}
        
        	public void setTail(Node<T> tail) {
@@ -25,4 +25,18 @@ import sda.Node;
        	    	return tail;
        	}
 
- 
+ public void add(T data) {
+		Node<T> newNode = new Node<T>(data);
+		if (head == null) {
+			head = newNode;
+			tail = head;
+			tail.setLeft(head);
+			head.setRight(tail);
+
+		} else {
+			tail.setRight(newNode);
+			newNode.setLeft(tail);
+			tail = newNode;
+		}
+
+	}
