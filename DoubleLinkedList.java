@@ -6,6 +6,7 @@ import sda.Node;
  * 
  */
  public class DoubleLinkedList<T extends Comparable<T>> {
+ 	
         private Node<T> head;
        	private Node<T> tail;
        
@@ -40,6 +41,7 @@ import sda.Node;
 		}
 
 	}
+	
 public int size() {
 		int size = 0;
 		Node<T> temp = head;
