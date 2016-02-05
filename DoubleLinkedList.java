@@ -41,19 +41,19 @@ import sda.Node;
 	
 		}
 	
-		public int size() {
-		int size = 0;
-		Node<T> temp = head;
-		if (head == tail) {
-			size = 1;
-		} else {
-			while (temp != null) {
-				temp = temp.getRight();
-				size++;
+	public int size() {
+			int size = 0;
+			Node<T> temp = head;
+			if (head == tail) {
+				size = 1;
+			} else {
+				while (temp != null) {
+					temp = temp.getRight();
+					size++;
+				}
 			}
+			return size;
 		}
-		return size;
-	}
 public Node<T> get(int index) {
 		Node<T> temp = head;
 		if (head == null) {
