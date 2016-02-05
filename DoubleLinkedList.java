@@ -90,3 +90,15 @@ import sda.Node;
 		}
 		return copied;
 	}
+	
+	// Returns another list but in reverse order.
+	public DoubleLinkedList<T> reverse() {
+		DoubleLinkedList<T> reversed = new DoubleLinkedList<T>();
+		Node<T> temp = tail;
+		while (temp != null) {
+			reversed.add(temp.getData());
+			temp = temp.getLeft();
+		}
+
+		return reversed;
+	}
