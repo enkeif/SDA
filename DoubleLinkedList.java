@@ -79,3 +79,14 @@ import sda.Node;
 		} 
 
 	}
+	
+	//returns a copy of the entire list.
+	public DoubleLinkedList<T> copy() {
+		DoubleLinkedList<T> copied = new DoubleLinkedList<T>();
+		Node<T> temp = head;
+		while (temp != null) {
+			copied.add(temp.getData());
+			temp = temp.getRight();
+		}
+		return copied;
+	}
