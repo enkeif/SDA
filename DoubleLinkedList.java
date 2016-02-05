@@ -76,10 +76,6 @@ import sda.Node;
 		} else if (node == head) {
 			node.getRight().setLeft(null);
 			head = node.getRight();
-		} else {
-			Node<T> temp = node.getLeft();
-			temp.setRight(node.getRight());
-			node.getRight().setLeft(temp);
-		}
+		} 
 
 	}
