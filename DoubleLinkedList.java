@@ -53,3 +53,14 @@ public int size() {
 		}
 		return size;
 	}
+public Node<T> get(int index) {
+		Node<T> temp = head;
+		if (head == null) {
+			return null;
+		} else {
+			for (int i = 0; i < index; i++) {
+				temp = temp.getRight();
+			}
+		}
+		return temp;
+	}
