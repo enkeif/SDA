@@ -5,7 +5,7 @@ import sda.Node;
  * @param 
  * 
  */
- public class DoubleLinkedList<T extends Comparable<T>> {
+ public class DoubleLinkedList<T> {
         private Node<T> head;
        	private Node<T> tail;
        
