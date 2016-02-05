@@ -91,7 +91,7 @@ import sda.Node;
 		return copied;
 	}
 	
-	// Returns another list but in reverse order.
+	//returns another list but in reverse order.
 	public DoubleLinkedList<T> reverse() {
 		DoubleLinkedList<T> reversed = new DoubleLinkedList<T>();
 		Node<T> temp = tail;
@@ -101,4 +101,18 @@ import sda.Node;
 		}
 
 		return reversed;
+	}
+	
+	//returns true if the current list is a palindrome.
+	public boolean isPalindrome() {
+		Node<T> temp1 = head;
+		Node<T> temp2 = tail;
+		for (int i = 0; i < size() / 2; i++) {
+			if (temp1.getData() != temp2.getData()) {
+				temp1 = temp1.getRight();
+				temp2 = temp2.getLeft();
+				return false;
+			}
+		}
+		return true;
 	}
