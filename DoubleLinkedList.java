@@ -54,7 +54,8 @@ import sda.Node;
 		}
 		return size;
 	}
-	
+
+	//get the node by index	
 	public Node<T> get(int index) {
 		Node<T> temp = head;
 		if (head == null) {
@@ -65,4 +66,20 @@ import sda.Node;
 			}
 		}
 		return temp;
+	}
+	
+	//removes the given node from the list.
+	public void removeAt(Node<T> node) {
+		if (node == tail) {
+			node.getLeft().setRight(null);
+			tail = node.getLeft();
+		} else if (node == head) {
+			node.getRight().setLeft(null);
+			head = node.getRight();
+		} else {
+			Node<T> temp = node.getLeft();
+			temp.setRight(node.getRight());
+			node.getRight().setLeft(temp);
+		}
+
 	}
