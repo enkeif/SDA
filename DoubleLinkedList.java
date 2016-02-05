@@ -26,43 +26,43 @@ import sda.Node;
        	}
 
 	 public void add(T data) {
-			Node<T> newNode = new Node<T>(data);
-			if (head == null) {
-				head = newNode;
-				tail = head;
-				tail.setLeft(head);
-				head.setRight(tail);
-	
-			} else {
-				tail.setRight(newNode);
-				newNode.setLeft(tail);
-				tail = newNode;
-			}
-	
+		Node<T> newNode = new Node<T>(data);
+		if (head == null) {
+			head = newNode;
+			tail = head;
+			tail.setLeft(head);
+			head.setRight(tail);
+
+		} else {
+			tail.setRight(newNode);
+			newNode.setLeft(tail);
+			tail = newNode;
 		}
-	
+
+	}
+
 	public int size() {
-			int size = 0;
-			Node<T> temp = head;
-			if (head == tail) {
-				size = 1;
-			} else {
-				while (temp != null) {
-					temp = temp.getRight();
-					size++;
-				}
+		int size = 0;
+		Node<T> temp = head;
+		if (head == tail) {
+			size = 1;
+		} else {
+			while (temp != null) {
+				temp = temp.getRight();
+				size++;
 			}
-			return size;
 		}
-		
+		return size;
+	}
+	
 	public Node<T> get(int index) {
-			Node<T> temp = head;
-			if (head == null) {
-				return null;
-			} else {
-				for (int i = 0; i < index; i++) {
-					temp = temp.getRight();
-				}
+		Node<T> temp = head;
+		if (head == null) {
+			return null;
+		} else {
+			for (int i = 0; i < index; i++) {
+				temp = temp.getRight();
 			}
-			return temp;
 		}
+		return temp;
+	}
