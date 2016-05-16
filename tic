@@ -1,0 +1,204 @@
+tol=0
+toc=0
+tor=0
+cl=0
+c=0
+cr=0
+dl=0
+d=0
+dr=0
+
+
+vis () {
+	if [ $1 -eq 0 ];then
+		return ' '
+	elif [ $1 -eq 1 ];then
+		return 'X'
+	elif [ $1 -eq -2 ]; then
+		return 'O'
+	fi
+}
+
+
+
+counter=0
+echo player1\'s name:
+read line
+player1=$line
+echo player2\'s name:
+read line
+player2=$line
+
+while true;
+do
+	if [ $counter -eq 9 ];then
+		echo Tie game
+		exit 1
+	fi
+	if [ $(($tol+$toc+$tor)) -eq 3 ]; then
+		echo $player1 wins
+		exit 1
+	elif [ $(($tol+$toc+$tor)) -eq -3 ]; then
+		echo $player2 wins
+		exit 1
+	elif [ $(($cl+$c+$cr)) -eq 3 ]; then
+		echo $player1 wins
+		exit 1
+	elif [ $(($cl+$c+$cr)) -eq -3 ]; then
+		#statements
+		echo $player2 wins
+		exit 1
+	elif [ $(($dl+$d+$dr)) -eq 3 ]; then
+		#statements
+		echo $player1 wins
+		exit 1
+	elif [ $(($dl+$d+$dr)) -eq -3 ]; then
+		#statements
+		echo $player2 wins
+		exit 1
+	elif [ $(($tol+$cl+$dl)) -eq 3 ]; then
+		#statements
+		echo $player1 wins
+		exit 1
+	elif [ $(($tol+$cl+$dl)) -eq -3 ]; then
+		#statements
+		echo $player2 wins
+		exit 1
+
+	elif [ $(($toc+$c+$d)) -eq 3 ]; then
+		#statement
+		echo $player1 wins
+		exit 1
+	elif [ $(($toc+$c+$d)) -eq -3 ]; then
+		#statements
+		echo $player2 wins
+		exit 1
+	elif [ $(($tor+$cr+$dr)) -eq 3 ]; then
+		#statements
+		echo $player1 wins
+		exit 1
+	elif [ $(($tor+$cr+$dr)) -eq -3 ]; then
+		#statements
+		echo $player2 wins
+		exit 1
+	elif [ $(($tol+$c+$dr)) -eq 3 ];then
+		echo $player1 wins
+		exit 1
+	elif [ $(($tol+$c+$dr)) -eq -3 ];then
+		echo player 1 wins
+		exit 1	
+	elif [ $(($tor+$c+$dl)) -eq 3 ]; then
+		echo player 1 wins
+		exit 1
+	elif [ $(($tor+$c+$dl)) -eq -3 ]; then
+		echo player 2 wins
+		exit 1
+	fi
+
+	if [ $(($counter%2)) -eq 0 ]; then
+		echo $player1 \'s turn
+		read line
+		if [ $line = topleft ];then
+			if [ $tol -ne 0 ];then
+				continue
+			fi
+			tol=1
+		elif [ $line = topcenter ];then
+			if [ $toc -ne 0 ];then
+				continue
+			fi
+			toc=1
+		elif [ $line = topright ];then
+			if [ $tor -ne 0 ];then
+				continue
+			fi
+			tor=1
+		elif [ $line = centerleft ];then
+			if [ $cl -ne 0 ];then
+				continue
+			fi
+			cl=1
+		elif [ $line = center ];then
+			if [ $c -ne 0 ];then
+				continue
+			fi
+			c=1
+		elif [ $line = centerright ];then
+			if [ $cr -ne 0 ];then
+				continue
+			fi
+			cr=1
+		elif [ $line = bottomleft ];then
+			if [ $dl -ne 0 ];then
+				continue
+			fi
+			dl=1
+		elif [ $line = bottomcenter ];then
+			if [ $d -ne 0 ];then
+				continue
+			fi
+			d=1
+		elif [ $line = bottomright ];then
+			if [ $dr -ne 0 ];then
+				continue
+			fi
+			dr=1
+		fi
+	elif [ $(($counter%2)) -eq 1 ];then
+		echo $player2 \'s turn
+		read line
+		if [ $line = topleft ];then
+			if [ $tol -ne 0 ];then
+				continue
+			fi
+			tol=-1
+		elif [ $line = topcenter ];then
+			if [ $toc -ne 0 ];then
+				continue
+			fi
+			toc=-1
+		elif [ $line = topright ];then
+			if [ $tor -ne 0 ];then
+				continue
+			fi
+			tor=-1
+		elif [ $line = centerleft ];then
+			if [ $cl -ne 0 ];then
+				continue
+			fi
+			cl=-1
+		elif [ $line = center ];then
+			if [ $c -ne 0 ];then
+				continue
+			fi
+			c=-1
+		elif [ $line = centerright ];then
+			if [ $cr -ne 0 ];then
+				continue
+			fi
+			cr=-1
+		elif [ $line = bottomleft ];then
+			if [ $dl -ne 0 ];then
+				continue
+			fi
+			dl=-1
+		elif [ $line = bottomcenter ];then
+			if [ $d -ne 0 ];then
+				continue
+			fi
+			d=-1
+		elif [ $line = bottomright ];then
+			if [ $dr -ne 0 ];then
+				continue
+			fi
+			dr=-1
+		fi
+	fi
+
+	a=vis $tol
+	echo $a
+	counter=$((counter + 1))
+	vis $tol
+	echo $vis $cl \| $vis c \| $vis cr
+	echo $vis $dl \| $vis d  \| $vis dr
+done
