@@ -1,0 +1,205 @@
+	topLeft=0
+				topCenter=0
+				topRight=0
+				centerLeft=0;
+				center=0
+				centerRight=0
+				downLeft=0
+				down=0
+				downRight=0
+
+
+				display () {
+					if [ $1 -eq 0 ];then
+						return ' '
+					elif [ $1 -eq 1 ];then
+						return 'X'
+					elif [ $1 -eq -2 ]; then
+						return 'O'
+					fi
+				}
+
+
+
+				counter=0
+			    echo "The players"
+				echo firstPlayer\'s name:
+				read line
+				firstPlayer=$line
+				echo secondPlayer\'s name:
+				read line
+				secondPlayer=$line
+
+				while [ true ]
+				do
+					if [ $counter -eq 9 ];then
+						echo Tie game
+						exit 1
+					fi
+					if [ $(($topLeft+$topCenter+$topRight)) -eq 3 ]; then
+						echo $firstPlayer wins
+						exit 1
+					elif [ $(($topLeft+$topCenter+$topRight)) -eq -3 ]; then
+						echo $secondPlayer wins
+						exit 1
+					elif [ $(($centerLeft+$center+$centerRight)) -eq 3 ]; then
+						echo $firstPlayer wins
+						exit 1
+					elif [ $(($centerLeft+$center+$centerRight)) -eq -3 ]; then
+						#statements
+						echo $secondPlayer wins
+						exit 1
+					elif [ $(($downLeft+$down+$downRight)) -eq 3 ]; then
+						#statements
+						echo $firstPlayer wins
+						exit 1
+					elif [ $(($downLeft+$down+$downRight)) -eq -3 ]; then
+						#statements
+						echo $secondPlayer wins
+						exit 1
+					elif [ $(($topLeft+$centerLeft+$downLeft)) -eq 3 ]; then
+						#statements
+						echo $firstPlayer wins
+						exit 1
+					elif [ $(($topLeft+$centerLeft+$downLeft)) -eq -3 ]; then
+						#statements
+						echo $secondPlayer wins
+						exit 1
+
+					elif [ $(($topCenter+$center+$down)) -eq 3 ]; then
+						#statement
+						echo $firstPlayer wins
+						exit 1
+					elif [ $(($topCenter+$center+$down)) -eq -3 ]; then
+						#statements
+						echo $secondPlayer wins
+						exit 1
+					elif [ $(($topRight+$centerRight+$downRight)) -eq 3 ]; then
+						#statements
+						echo $firstPlayer wins
+						exit 1
+					elif [ $(($topRight+$centerRight+$downRight)) -eq -3 ]; then
+						#statements
+						echo $secondPlayer wins
+						exit 1
+					elif [ $(($topLeft+$center+$downRight)) -eq 3 ];then
+						echo $firstPlayer wins
+						exit 1
+					elif [ $(($topLeft+$center+$downRight)) -eq -3 ];then
+						echo player 1 wins
+						exit 1	
+					elif [ $(($topRight+$center+$downLeft)) -eq 3 ]; then
+						echo player 1 wins
+						exit 1
+					elif [ $(($topRight+$center+$downLeft)) -eq -3 ]; then
+						echo player 2 wins
+						exit 1
+					fi
+
+					if [ $(($counter%2)) -eq 0 ]; then
+						echo $firstPlayer \'s turn
+						read line
+						if [ $line = topleft ];then
+							if [ $topLeft -ne 0 ];then
+								continue
+							fi
+							topLeft=1
+						elif [ $line = topCenter ];then
+							if [ $topCenter -ne 0 ];then
+								continue
+							fi
+							topCenter=1
+						elif [ $line = topRight ];then
+							if [ $topRight -ne 0 ];then
+								continue
+							fi
+							topRight=1
+						elif [ $line = centerleft ];then
+							if [ $centerLeft -ne 0 ];then
+								continue
+							fi
+							centerLeft=1
+						elif [ $line = center ];then
+							if [ $center -ne 0 ];then
+								continue
+							fi
+							center=1
+						elif [ $line = centerRight ];then
+							if [ $centerRight -ne 0 ];then
+								continue
+							fi
+							centerRight=1
+						elif [ $line = bottomleft ];then
+							if [ $downLeft -ne 0 ];then
+								continue
+							fi
+							downLeft=1
+						elif [ $line = bottomCenter ];then
+							if [ $down -ne 0 ];then
+								continue
+							fi
+							down=1
+						elif [ $line = bottomright ];then
+							if [ $downRight -ne 0 ];then
+								continue
+							fi
+							downRight=1
+						fi
+					elif [ $(($counter%2)) -eq 1 ];then
+						echo $secondPlayer \'s turn
+						read line
+						if [ $line = topleft ];then
+							if [ $topLeft -ne 0 ];then
+								continue
+							fi
+							topLeft=-1
+						elif [ $line = topcenter ];then
+							if [ $topCenter -ne 0 ];then
+								continue
+							fi
+							topCenter=-1
+						elif [ $line = topright ];then
+							if [ $topRight -ne 0 ];then
+								continue
+							fi
+							topRight=-1
+						elif [ $line = centerleft ];then
+							if [ $centerLeft -ne 0 ];then
+								continue
+							fi
+							centerLeft=-1
+						elif [ $line = center ];then
+							if [ $center -ne 0 ];then
+								continue
+							fi
+							center=-1
+						elif [ $line = centerright ];then
+							if [ $centerRight -ne 0 ];then
+								continue
+							fi
+							centerRight=-1
+						elif [ $line = bottomleft ];then
+							if [ $downLeft -ne 0 ];then
+								continue
+							fi
+							downLeft=-1
+						elif [ $line = bottomcenter ];then
+							if [ $down -ne 0 ];then
+								continue
+							fi
+							d=-1
+						elif [ $line = bottomright ];then
+							if [ $downRight -ne 0 ];then
+								continue
+							fi
+							downRight=-1
+						fi
+					fi
+
+					temp=display $topLeft
+					echo $temp
+					counter=$((counter + 1))
+					display $topLeft
+					echo $display $centerLeft \| $display center \| $display centerRight
+					echo $display $downLeft \| $display down  \| $display downRight
+				done
